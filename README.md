@@ -1,6 +1,29 @@
 # OOXML DOC PARSER
 
-This is a simple POC for OOXML parsing on the client side
+This project demonstrates the parsing of uploaded XML files on the client side. As an MVP, the focus is on extracting and formatting headings, lists, paragraphs, basic styling, and indentations.
+
+## Technologies Used
+
+- **Vue 3** for the core application logic
+- **Tailwind CSS** for styling
+- **Shadow DOM** to isolate the document’s content area
+
+## Parsing Approach
+
+XML documents contain various attributes and properties that must be processed to achieve an accurate representation. However, achieving a pixel-perfect match takes time and dedication. For this MVP, the goal is not perfect visual fidelity but rather extracting and displaying readable information.
+
+## How to Use
+
+1. **Upload an XML file**
+
+   - Drag and drop the file into the designated drop zone.
+   - Alternatively, click the upload area to select a file.
+
+2. **View the Parsed Output**
+   - The document is parsed immediately.
+   - The extracted content is rendered on the screen for easy readability.
+
+This MVP serves as a foundation for future improvements, aiming to enhance XML parsing capabilities while maintaining usability and performance.
 
 ## Recommended IDE Setup
 
