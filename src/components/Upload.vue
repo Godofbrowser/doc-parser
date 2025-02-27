@@ -20,7 +20,13 @@
       <p class="text-gray-600 mb-4">Drag and drop your document here</p>
       <label class="text-sm text-gray-500 cursor-pointer"
         >or click to select a file
-        <input type="file" class="hidden" ref="fileInput" @change="handleFileSelect" />
+        <input
+          type="file"
+          class="hidden"
+          ref="fileInput"
+          @change="handleFileSelect"
+          :accept="supportedFileTypes.join(',')"
+        />
       </label>
 
       <div
