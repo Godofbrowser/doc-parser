@@ -8,13 +8,14 @@
       @dragover.prevent="handleDragOver"
       @dragleave.prevent="handleDragLeave"
       @drop.prevent="handleDrop"
+      @click="selectFileClickHandler"
       :class="[
-        'w-full max-w-md border-2 border-dashed rounded-lg p-8 text-center transition-colors',
+        'w-full max-w-md border-2 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer',
         isDragActive ? 'bg-blue-50 border-blue-400' : 'bg-white border-gray-300',
       ]"
     >
       <p class="text-gray-600 mb-4">Drag and drop your document here</p>
-      <label class="text-sm text-gray-500"
+      <label class="text-sm text-gray-500 cursor-pointer"
         >or click to select a file
         <!-- Optional: If you want to allow clicking, you can add a hidden input -->
         <input type="file" class="hidden" ref="fileInput" @change="handleFileSelect" />
@@ -50,7 +51,7 @@ import { readFileContent } from '../helpers'
 
 const isLoading = ref(false)
 const isDragActive = ref(false)
-const fileInput = ref(null)
+const fileInput = ref<HTMLInputElement | null>(null)
 
 const emit = defineEmits({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -78,6 +79,10 @@ const handleFileSelect = (event: Event) => {
   if (files && files.length > 0) {
     startParsing(files[0])
   }
+}
+
+const selectFileClickHandler = () => {
+  fileInput.value?.click()
 }
 
 // Simulate parsing and set loading state
