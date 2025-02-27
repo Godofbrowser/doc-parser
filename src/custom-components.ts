@@ -14,7 +14,7 @@ class ViewerContent extends HTMLElement {
           margin: 20px 0;
           padding: 20px;
           border: 1px solid #ddd;
-          background: #fafafa;
+          background: #ffffff;
         }
       `
 

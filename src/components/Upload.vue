@@ -1,3 +1,4 @@
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
     <h1 class="text-4xl font-bold mb-8 uppercase">Doc Parser</h1>
@@ -64,16 +65,16 @@ const handleDragLeave = () => {
   isDragActive.value = false
 }
 
-const handleDrop = (event) => {
+const handleDrop = (event: DragEvent) => {
   isDragActive.value = false
-  const files = event.dataTransfer.files
+  const files = event.dataTransfer?.files
   if (files && files.length > 0) {
     startParsing(files[0])
   }
 }
 
-const handleFileSelect = (event) => {
-  const files = event.target.files
+const handleFileSelect = (event: Event) => {
+  const files = (event.target as HTMLInputElement).files
   if (files && files.length > 0) {
     startParsing(files[0])
   }
