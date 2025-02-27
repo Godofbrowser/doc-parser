@@ -52,6 +52,7 @@ const isDragActive = ref(false)
 const fileInput = ref(null)
 
 const emit = defineEmits({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   input: (value: string) => true,
 })
 
@@ -81,12 +82,11 @@ const handleFileSelect = (event) => {
 // Simulate parsing and set loading state
 const startParsing = async (file: Blob) => {
   isLoading.value = true
-  // Simulate parsing delay (for example, 2 seconds)
-  setTimeout(() => {
-    readFileContent(file).then((content) => {
-      emit('input', content)
-      console.log('Parsing complete.')
-    })
-  }, 2000)
+
+  readFileContent(file).then((content) => {
+    emit('input', content)
+    console.log('Parsing complete.')
+    isLoading.value = false
+  })
 }
 </script>

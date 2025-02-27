@@ -1,6 +1,6 @@
-# doc-parser
+# OOXML DOC PARSER
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a simple POC for OOXML parsing on the client side
 
 ## Recommended IDE Setup
 
