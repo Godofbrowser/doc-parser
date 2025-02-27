@@ -20,5 +20,10 @@ export const useDocStore = defineStore('doc', () => {
     isParsing.value = false
   }
 
-  return { rawXml, parsedContent, parseXml, isParsing }
+  function removeDocument() {
+    rawXml.value = ''
+    parsedContent.value = ''
+  }
+
+  return { rawXml, parsedContent, parseXml, isParsing, removeDocument }
 })

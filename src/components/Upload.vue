@@ -1,7 +1,7 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-    <h1 class="text-4xl font-bold mb-8 uppercase">Doc Parser</h1>
+    <h1 class="text-4xl font-bold mb-9 uppercase">Doc Parser</h1>
 
     <div
       v-if="!isLoading"
@@ -10,16 +10,27 @@
       @drop.prevent="handleDrop"
       @click="selectFileClickHandler"
       :class="[
-        'w-full max-w-md border-2 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer',
+        'w-full max-w-md border-2 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer relative',
         isDragActive ? 'bg-blue-50 border-blue-400' : 'bg-white border-gray-300',
       ]"
     >
+      <p class="text-xs text-gray-600 mt-4 text-left absolute left-0 top-[-40px]">
+        Supported file types: {{ supportedFileTypes.join(',') }}
+      </p>
       <p class="text-gray-600 mb-4">Drag and drop your document here</p>
       <label class="text-sm text-gray-500 cursor-pointer"
         >or click to select a file
-        <!-- Optional: If you want to allow clicking, you can add a hidden input -->
         <input type="file" class="hidden" ref="fileInput" @change="handleFileSelect" />
       </label>
+
+      <div
+        v-if="docStore.parsedContent"
+        class="text-xs text-gray-600 mt-4 text-center absolute left-0 bottom-[-40px] w-full"
+      >
+        <button @click.prevent.stop="emit('return')" class="cursor-pointer">
+          Previous document <ChevronRightIcon class="size-4" />
+        </button>
+      </div>
     </div>
 
     <!-- Loading Spinner -->
@@ -48,7 +59,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { readFileContent } from '../helpers'
+import { useDocStore } from '@/stores/doc'
+import ChevronRightIcon from './icons/ChevronRightIcon.vue'
 
+const docStore = useDocStore()
+
+const supportedFileTypes = ['.xml']
 const isLoading = ref(false)
 const isDragActive = ref(false)
 const fileInput = ref<HTMLInputElement | null>(null)
@@ -56,6 +72,7 @@ const fileInput = ref<HTMLInputElement | null>(null)
 const emit = defineEmits({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   input: (value: string) => true,
+  return: () => true,
 })
 
 const handleDragOver = () => {
