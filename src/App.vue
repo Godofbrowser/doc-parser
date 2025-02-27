@@ -1,8 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Upload from './components/Upload.vue'
+import Viewer from './components/Viewer.vue'
+import { useDocStore } from '@/stores/doc'
+
+const docStore = useDocStore()
+</script>
 
 <template>
   <main>
-    <h1 class="text-3xl font-bold underline text-red-400">Hello world!</h1>
+    <Upload
+      v-if="!docStore.parsedContent || docStore.isParsing"
+      @input="docStore.parseXml($event)"
+    />
+    <Viewer v-else :content="docStore.parsedContent" />
   </main>
 </template>
 

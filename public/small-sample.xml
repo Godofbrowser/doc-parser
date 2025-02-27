@@ -1,0 +1,52 @@
+<pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
+        <pkg:part pkg:name="/word/document.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml">
+          <pkg:xmlData>
+            <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+              <w:body>
+                <!-- Heading 1 -->
+                <w:p>
+                  <w:pPr>
+                    <w:pStyle w:val="Heading1"/>
+                  </w:pPr>
+                  <w:r><w:t>Document Title</w:t></w:r>
+                </w:p>
+                <!-- Normal paragraph -->
+                <w:p>
+                  <w:r><w:t>This is an introductory paragraph.</w:t></w:r>
+                </w:p>
+                <!-- List item -->
+                <w:p>
+                  <w:pPr>
+                    <w:numPr>
+                      <w:ilvl w:val="0"/>
+                      <w:numId w:val="1"/>
+                    </w:numPr>
+                  </w:pPr>
+                  <w:r><w:t>First bullet point</w:t></w:r>
+                </w:p>
+                <!-- List item -->
+                <w:p>
+                  <w:pPr>
+                    <w:numPr>
+                      <w:ilvl w:val="0"/>
+                      <w:numId w:val="1"/>
+                    </w:numPr>
+                  </w:pPr>
+                  <w:r><w:t>Second bullet point</w:t></w:r>
+                </w:p>
+                <!-- Heading 2 -->
+                <w:p>
+                  <w:pPr>
+                    <w:pStyle w:val="Heading2"/>
+                  </w:pPr>
+                  <w:r><w:t>Subheading Example</w:t></w:r>
+                </w:p>
+                <!-- Normal paragraph -->
+                <w:p>
+                  <w:r><w:t>More detailed content goes here.</w:t></w:r>
+                </w:p>
+              </w:body>
+            </w:document>
+          </pkg:xmlData>
+        </pkg:part>
+      </pkg:package>
