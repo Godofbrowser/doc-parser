@@ -13,12 +13,10 @@ export const useDocStore = defineStore('doc', () => {
    * @param {string} xmlString - The XML content as a string.
    */
   function parseXml(xmlString: string) {
-    console.log('#'.repeat(45), { xmlString })
     isParsing.value = true
     rawXml.value = xmlString
 
     parsedContent.value = parseDocumentXML(xmlString)
-    console.log('#'.repeat(45), { parsedContent })
     isParsing.value = false
   }
 

@@ -91,7 +91,6 @@ const startParsing = async (file: Blob) => {
 
   readFileContent(file).then((content) => {
     emit('input', content)
-    console.log('Parsing complete.')
     isLoading.value = false
   })
 }
