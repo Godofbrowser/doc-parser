@@ -14,7 +14,6 @@ let ctx: gsap.Context
 
 onMounted(async () => {
   await nextTick()
-  console.log({ viwer: boxViewer.value, upload: boxUpload.value })
   gsap.set(boxViewer.value, { x: 200, opacity: 0 }) // Initialize position
   gsap.set(boxUpload.value, { zIndex: 100 }) // Initialize z-index
   ctx = gsap.context(() => {
@@ -40,7 +39,6 @@ onUnmounted(() => {
 watch(
   () => docStore.parsedContent,
   (value, newVal) => {
-    console.log({ value, newVal })
     if (value !== newVal) toggleAnimation()
   },
 )
@@ -56,7 +54,6 @@ const toggleAnimation = () => {
 
 <template>
   <main class="relative">
-    <!-- <button @click="toggleAnimation" class="fixed top-1/2 left-1/2 z-[999999999]">toggle</button> -->
     <div ref="boxUpload" class="absolute top-0 left-0 w-full">
       <Upload @input="docStore.parseXml($event)" @return="toggleAnimation" />
     </div>
